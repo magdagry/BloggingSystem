@@ -73,3 +73,19 @@ if(isset($_POST['submit'])) {
              
 
             </div>
+
+
+
+
+
+            <?php 
+                                
+                                //EDIT QUERY Edytowanie wierszy w bazie danych
+                                // if (isset($_GET['edit'])) {
+                                //     $cat_id =  $_GET ['edit'];
+                                    
+                                //     include "includes/admin_header.php"
+                            
+                                //     }
+            
+                                ?>
