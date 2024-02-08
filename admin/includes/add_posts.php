@@ -15,17 +15,27 @@
     $post_comment_count = 4;
 
 
- move_uploaded_file($post_image_temp, "..images/$post_image");
+ move_uploaded_file($post_image_temp, "../images/$post_image");
+
+ echo "Post image: $post_image<br>";
 
  $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags, post_comment_count, post_status) ";
 
  $query .= 
  "VALUES({$post_category_id}, '{$post_title}', '{$post_author}', now(), '{$post_image}', '{$post_content}', '{$post_tags}', '{$post_comment_count}', '{$post_status}') ";
  
+ echo "Query: $query<br>";
+
  $create_posts_query = mysqli_query($conn, $query);
 
 
  confirmQuery($create_posts_query);
+
+ if ($create_posts_query && move_uploaded_file($post_image_temp, "../images/$post_image")) {
+    echo "Post added successfully!";
+} else {
+    echo "Error adding post or uploading image: " . mysqli_error($conn);
+}
 
  }
                          
@@ -51,7 +61,7 @@
 </div>
 <div class="form-group">
     <label for="post_image">Post Image</label>
-    <input type="file" class="form-control" name="post_image">
+    <input type="file" class="form-control" name="image">
 </div>
 <div class="form-group">
     <label for="post_tags">Post Tags</label>
