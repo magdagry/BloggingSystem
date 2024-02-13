@@ -35,11 +35,11 @@
   move_uploaded_file($post_image_temp, "../images/$post_image");
   if(empty($post_image)) {
 
-    $query = "SELECT * FROM posts WHERE post_id = $the_post_id";
+    $query = "SELECT * FROM posts WHERE post_id = $the_post_id ";
       $elect_image = mysqli_query($conn, $query); 
 
       while($row =  mysqli_fetch_assoc($select_image)) {
-        $post_image = $row[post_image]; 
+        $post_image = $row['post_image']; 
       }
   }
 
@@ -103,6 +103,7 @@
 
 <div class="form-group">
 <img width=100 src="../images/<?php echo $post_image; ?>" alt="">
+<input type="file" name="image">
 </div>
 
 <div class="form-group">
