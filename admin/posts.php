@@ -35,7 +35,6 @@
                             case 'edit_post';
                              include "includes/edit_post.php";
                             break;
-                            
                             case '200';
                             echo "NICE 200";
                             break;

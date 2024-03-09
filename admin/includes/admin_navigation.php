@@ -62,7 +62,7 @@
                     Users <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="demo" class="collapse">
                     <li>
-                        <a href="users.php">Viev All Users</a>
+                        <a href="./users.php">Viev All Users</a>
                     </li>
                     <li>
                         <a href="users.php?source=add_user">Add User </a>
