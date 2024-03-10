@@ -60,8 +60,9 @@
     echo "<td> <a href='/users.php?p_id=$user_id'>$username</a></td>";
     }
 
-    echo "<td><a href='users.php?approve='>Approve</a></td>";
-    echo "<td><a href='users.php?unapprove=''>Unapprove</a></td>";
+    echo "<td><a href='users.php?change_to_admin={$user_id}'>Admin</a></td>";
+    echo "<td><a href='users.php?change_to_sub={$user_id}'>Subscriber</a></td>";
+    echo "<td><a href='users.php?source=edit_user&edit_user={$user_id}'>Edit</a></td>";
     echo "<td><a href='users.php?delete={$user_id}'>Delete</a></td>";
     echo "./<tr>";
     }
@@ -84,28 +85,25 @@
 
 <?php
 
-if(isset($_GET['approve'])) {
+if(isset($_GET['change_to_admin'])) {
 
-  echo "hallo";
 
-$the_users_id = $_GET['approve'];
+$the_user_id = $_GET['change_to_admin'];
 
-    $query = "UPDATE users SET comment_status = 'approved' WHERE comment_id = $the_comment_id ";
-    $approve_user_query = mysqli_query($conn, $query);
+    $query = "UPDATE users SET user_role = 'admin' WHERE user_id = $the_user_id ";
+    $change_to_admin_query = mysqli_query($conn, $query);
 
     header("Location: users.php");
     exit;
 }
 
 
-if(isset($_GET['unapprove'])) {
+if(isset($_GET['change_to_sub'])) {
 
-  echo "hallo";
+$the_user_id = $_GET['change_to_sub'];
 
-$the_user_id = $_GET['unapprove'];
-
-    $query = "UPDATE users SET comment_status = 'unapproved' WHERE user_id = $the_user_id ";
-    $unapprove_user_query = mysqli_query($conn, $query);
+    $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = $the_user_id ";
+    $change_to_sub_query = mysqli_query($conn, $query);
 
     header("Location: users.php");
     exit;
@@ -113,8 +111,6 @@ $the_user_id = $_GET['unapprove'];
 
 
 if(isset($_GET['delete'])) {
-
-    echo "hallo";
 
 $the_user_id = $_GET['delete'];
 
