@@ -44,11 +44,22 @@
 
 <div class="form-group">
  
-<select name="user_role" id="" >
+<select name="post_category" id="post_category" >
 
-<option value="subscriber">Select Options</option>
-<option value="admin">Admin</option>
-<option value="subscriber">Subscriber</option>
+    <?php 
+    $query = "SELECT * FROM categories";
+                    $select_categories = mysqli_query($conn, $query); 
+    
+                    confirmQuery($select_categories);
+    
+                    while($row =  mysqli_fetch_assoc($select_categories)) {
+                    $cat_id =  $row ['cat_id'];
+                    $cat_title =  $row ['cat_title'];
+    
+                    echo "<option value='$cat_id'>{$cat_title}</option>";
+    
+                    }
+    ?>
 
 </select>
 </div>
