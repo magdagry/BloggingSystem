@@ -42,9 +42,9 @@
 
                     $query = "SELECT * FROM posts";
                     $select_all_post = mysqli_query($conn, $query);
-                    $post_counts = mysqli_num_rows($select_all_post); 
+                    $post_count = mysqli_num_rows($select_all_post); 
                     
-                    echo "<div class='huge'>{$post_counts}</div>"
+                    echo "<div class='huge'>{$post_count}</div>"
 
                     ?>
 
@@ -74,9 +74,9 @@
 
                     $query = "SELECT * FROM comments";
                     $select_all_comment = mysqli_query($conn, $query);
-                    $comment_counts = mysqli_num_rows($select_all_comment); 
+                    $comment_count = mysqli_num_rows($select_all_comment); 
                     
-                    echo "<div class='huge'>{$comment_counts}</div>"
+                    echo "<div class='huge'>{$comment_count}</div>"
 
                     ?>
 
@@ -107,9 +107,9 @@
                                         
                     $query = "SELECT * FROM users";
                     $select_all_user = mysqli_query($conn, $query);
-                    $user_counts = mysqli_num_rows($select_all_user); 
+                    $user_count = mysqli_num_rows($select_all_user); 
 
-                    echo "<div class='huge'>{$user_counts}</div>"
+                    echo "<div class='huge'>{$user_count}</div>"
 
                     ?>
                     
@@ -140,9 +140,9 @@
 
                     $query = "SELECT * FROM categories";
                     $select_all_categories = mysqli_query($conn, $query);
-                    $category_counts = mysqli_num_rows($select_all_categories); 
+                    $category_count = mysqli_num_rows($select_all_categories); 
 
-                    echo "<div class='huge'>{$category_counts}</div>"
+                    echo "<div class='huge'>{$category_count}</div>"
 
                     ?>
 
@@ -162,6 +162,27 @@
 </div>
                 <!-- /.row -->
 
+<?php 
+
+$query = "SELECT * FROM posts WHERE post_status = 'published' ";
+$select_all_published_posts = mysqli_query($conn, $query);
+$post_published_count = mysqli_num_rows($select_all_published_posts); 
+
+$query = "SELECT * FROM posts WHERE post_status = 'draft' ";
+$select_all_draft_posts = mysqli_query($conn, $query);
+$post_draft_count = mysqli_num_rows($select_all_draft_posts); 
+
+$query = "SELECT * FROM comments WHERE comment_status = 'unapproved' ";
+$unapproved_comments_query = mysqli_query($conn, $query);
+$unapproved_comment_count = mysqli_num_rows($unapproved_comments_query); 
+
+$query = "SELECT * FROM users WHERE user_role = 'subscriber'";
+$select_all_subscribers = mysqli_query($conn, $query);
+$subscriber_count = mysqli_num_rows($select_all_subscribers); 
+
+
+?>
+
                 <div class="row">
 
                 <script type="text/javascript">
@@ -170,17 +191,30 @@
 
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses', 'Profit'],
-          ['2014', 1000, 400, 200],
-          ['2015', 1170, 460, 250],
-          ['2016', 660, 1120, 300],
-          ['2017', 1030, 540, 350]
+          ['Data', 'Count'],
+
+          <?php 
+
+          $element_text = ['All Posts', 'Active Posts', 'Draft Posts', 'Comments', 'Pending Comments', 'Users','Subscribers', 'Categories' ];
+          $element_count = [$post_count,$post_published_count, $post_draft_count, $comment_count, $unapproved_comment_count, $user_count, $subscriber_count, $category_count];
+
+          for($i = 0;$i < 8; $i++) {
+
+            echo "['{$element_text[$i]}'" . "," . "{$element_count[$i]}],";
+
+          }
+
+          ?>
+
+
+
+        //   ['Posts', 1000],
         ]);
 
         var options = {
           chart: {
-            title: 'Company Performance',
-            subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+            title: '',
+            subtitle: '',
           }
         };
 

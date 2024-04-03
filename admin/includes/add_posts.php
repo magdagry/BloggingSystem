@@ -75,21 +75,25 @@
     <label for="title">Post Author</label>
     <input type="text" class="form-control" name="post_author">
 </div>
+
 <div class="form-group">
     <label for="post_status">Post Status</label>
     <input type="text" class="form-control" name="post_status">
 </div>
+
 <div class="form-group">
     <label for="post_image">Post Image</label>
     <input type="file" class="form-control" name="image">
 </div>
+
 <div class="form-group">
     <label for="post_tags">Post Tags</label>
     <input type="text" class="form-control" name="post_tags">
 </div>
+
 <div class="form-group">
-    <label for="title">Post Content</label>
-   <textarea class="form-control" name="post_content" id="" cols="30" rows="10"></textarea>
+    <label for="summernote">Post Content</label>
+   <textarea class="form-control" name="post_content" id="summernote" cols="30" rows="10"></textarea>
 </div>
 
 <div class="form-group">
