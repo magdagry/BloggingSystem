@@ -12,7 +12,7 @@
   $post_author =  $row ['post_author'];
   $post_title =  $row ['post_title'];
   $post_category_id =  $row ['post_category_id'];
-  echo  $post_category_id ;
+  // echo  $post_category_id ;
   $post_status =  $row ['post_status'];
   $post_image =  $row ['post_image'];
   $post_content =  $row ['post_content'];
@@ -56,6 +56,8 @@
 
    $update_post = mysqli_query($conn, $query);
    confirmQuery($update_post);
+
+   echo "<p class='bg-success'>Post Update . <a href='/post.php?p_id={$the_post_id}'> View Post</a> or <a href='posts.php'>Edit More Posts</a> </p>";
 
   }
 ?>
@@ -127,8 +129,7 @@ if($post_status == 'published') {
 
 <div class="form-group">
     <label for="title">Post Content</label>
-   <textarea class="form-control" name="post_content" id="" cols="30" rows="10"><?php echo $post_content; ?>
-   </textarea>
+   <textarea class="form-control" name="post_content" id="" cols="30" rows="10"><?php echo $post_content; ?></textarea>
 </div>
 
 <div class="form-group">
