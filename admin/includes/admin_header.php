@@ -33,13 +33,13 @@ if(!isset($_SESSION['user_role'])) {
     <link href="css/sb-admin.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
 
-    <!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet"> -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 
     
     <link href="css/summernote.css" rel="stylesheet">
-    <link href="css/styles.css" rel="stylesheet">
+    <!-- <link href="css/styles.css" rel="stylesheet"> -->
 
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
