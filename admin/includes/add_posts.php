@@ -30,6 +30,10 @@
 
  confirmQuery($create_posts_query);
 
+ $the_post_id = mysqli_insert_id($connection);
+
+ echo "<p class='bg-success'>Post Created . <a href='/post.php?p_id={$the_post_id}'> View Post</a> or<a href=''>Edit More Posts</a> </p>";
+
  }
                          
 ?>
@@ -82,8 +86,8 @@
     <label for="post_status">Post Status</label>
 
     <select name="post_status" id="">
-        <option value="draft">Select Options</option>
-        <option value="published">Publish</option>
+        <option value="draft">Post Status</option>
+        <option value="published">Published</option>
         <option value="draft">Draft</option>
     </select>
 

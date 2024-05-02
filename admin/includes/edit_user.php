@@ -40,6 +40,17 @@ $user_role = $row ['user_role'];
 
 //  echo "Post image: $post_image<br>";
 
+$query = "SELECT randSalt FROM users";
+$elect_randsalt_query = mysqli_query($conn, $query);
+if(!$elect_randsalt_query) {
+die("Query Failed" . mysqli_error($conn));
+
+}
+
+$row = mysqli_fetch_array($elect_randsalt_query);
+$salt = $row['randSalt'];
+$hashed_password = crypt($user_password, $salt);
+
 
 $query = "UPDATE users SET ";
 $query .="user_firstname = '{$user_firstname}', ";
@@ -47,7 +58,7 @@ $query .="user_lastname = '{$user_lastname}', ";
 $query .="user_role = '{$user_role}', ";
 $query .="username = '{$username}', ";
 $query .="user_email = '{$user_email}', ";
-$query .="user_password = '{$user_password}' ";
+$query .="user_password = '{$hashed_password}' ";
 $query .="WHERE user_id = {$the_user_id} ";
 
 $edit_user_query = mysqli_query($conn, $query);
@@ -72,7 +83,7 @@ confirmQuery($edit_user_query);
 <div class="form-group">
  
 <select name="user_role" id="" >
-<option value="subscriber"><?php echo $user_role; ?> </option>
+<option value="<?php echo $user_role; ?>"><?php echo $user_role; ?> </option>
 
 <?php 
 
