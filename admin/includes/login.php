@@ -5,6 +5,14 @@
 
 if(isset($_POST['login'])) {
 
+    $password = "secret";
+    $has_format = "$2y$10&";
+
+    $salt = "iusesomecrazystrings22";
+
+    echo strlen($salt);
+    crypt($password);
+
     $username = $_POST['username'];
     $password = $_POST['password'];
 

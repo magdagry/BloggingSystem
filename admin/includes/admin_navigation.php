@@ -90,3 +90,5 @@ if(isset($_SESSION['username'])) {
     </div>
     <!-- /.navbar-collapse -->
 </nav>
+
+onClick=\"javascript: return confirm('Are you sure you want to delete'); \"

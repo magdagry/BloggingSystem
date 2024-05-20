@@ -28,9 +28,10 @@ $query = "INSERT INTO users (username, user_email, user_password, user_role) ";
 $query .= "VALUES('{$username}','{$email}', '{$password}', 'subscriber' )";
 $register_user_query = mysqli_query($conn, $query);
 if(!$register_user_query) {
-die("QUERY FAILED ". mysqli_error($conn) . '' . mysqli_errno($conn));
+    die("QUERY FAILED ". mysqli_error($conn) . '' . mysqli_errno($conn));
 }
-
+else         
+header("Location: ../../admin/index.php"); 
 }
 
  ?>
